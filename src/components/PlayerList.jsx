@@ -113,22 +113,25 @@ const PlayerList = () => {
         )}
       </div>
 
-      {players.length > 0 && (
-        <button
-          onClick={resetScores}
-          className="mt-4 px-6 py-2 bg-red-600 rounded-lg shadow-lg text-white font-bold text-lg"
-        >
-          Reset Scores
-        </button>
-      )}
-      {players.length > 0 && (
-        <button
-          onClick={newGame}
-          className="mt-4 px-6 py-2 bg-blue-600 rounded-lg shadow-lg text-white font-bold text-lg"
-        >
-          New Game
-        </button>
-      )}
+      <div className="flex space-x-4">
+        {players.length > 0 && (
+          <button
+            onClick={resetScores}
+            className="mt-4 px-6 py-2 bg-red-600 rounded-lg shadow-lg text-white font-bold text-lg"
+          >
+            Reset Scores
+          </button>
+        )}
+
+        {players.length > 0 && (
+          <button
+            onClick={newGame}
+            className="mt-4 px-6 py-2 bg-blue-600 rounded-lg shadow-lg text-white font-bold text-lg"
+          >
+            New Game
+          </button>
+        )}
+      </div>
     </div>
   );
 };
