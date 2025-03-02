@@ -52,6 +52,10 @@ const PlayerList = () => {
     const resetPlayers = players.map((player) => ({ ...player, score: 0 }));
     setPlayers(resetPlayers);
   };
+  const newGame = () => {
+    setPlayers([]);
+    localStorage.removeItem("players"); // Clear storage
+  };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white p-3">
@@ -77,7 +81,9 @@ const PlayerList = () => {
         {players.length > 0 ? (
           players.map((player, index) => (
             <div key={index} className="mb-4 text-center">
-              <h2 className="text-xl font-semibold">{player.name}: {player.score}</h2>
+              <h2 className="text-xl font-semibold">
+                {player.name}: {player.score}
+              </h2>
               <div className="flex flex-wrap justify-center mt-2">
                 {balls.map((ball, i) => (
                   <BallButton
@@ -113,6 +119,14 @@ const PlayerList = () => {
           className="mt-4 px-6 py-2 bg-red-600 rounded-lg shadow-lg text-white font-bold text-lg"
         >
           Reset Scores
+        </button>
+      )}
+      {players.length > 0 && (
+        <button
+          onClick={newGame}
+          className="mt-4 px-6 py-2 bg-blue-600 rounded-lg shadow-lg text-white font-bold text-lg"
+        >
+          New Game
         </button>
       )}
     </div>
